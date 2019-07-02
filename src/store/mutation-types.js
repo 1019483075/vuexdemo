@@ -1,3 +1,2 @@
-export const SETNUMS = 'SETNUMS'
-export const PRICE = 'PRICE'
-export const TOTAL = 'TOTAL'
+export const SET_NUMS = 'SETNUMS'
+export const SET_PRICE = 'PRICE'

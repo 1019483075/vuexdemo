@@ -7,7 +7,7 @@
         <a href="#">{{a}}*{{b}}={{total}}</a>
         <p>{{total}}</p>
         <button @click="add">点击</button>
-        <button @click="oneaction">2次点击</button>
+        <button @click="changeNumAndPrice">changeNumAndPrice</button>
       </li>
     </ul>
   </div>
@@ -15,7 +15,8 @@
 
 <script>
 import * as type from '../store/mutation-types'
-import {mapState, mapMutations, mapGetters, mapActions} from 'vuex'
+import { mapState, mapMutations, mapGetters, mapActions } from 'vuex'
+
 export default {
   name: 'HelloWorld',
   data () {
@@ -30,14 +31,12 @@ export default {
     // total () {
     //   return this.a * this.b
     // },
-    ...mapState({// 是指辅助函数
+    ...mapState({
+      // 是指辅助函数
       a: 'nums',
-      b: 'price',
-      c: 'total'
+      b: 'price'
     }),
-    ...mapGetters([
-      'total'
-    ])
+    ...mapGetters(['total'])
   },
   methods: {
     add () {
@@ -48,21 +47,20 @@ export default {
     // ...mapMutations({// 三个点的一般放在最后
     //   setNums: 'setNums'
     // }),
-    ...mapMutations({// ...是指延展操作符
-      'setNums': type.SETNUMS,
-      'setprice': type.PRICE,
-      'settotal': type.TOTAL
+    ...mapMutations({
+      // ...是指延展操作符
+      setNums: type.SET_NUMS,
+      setprice: type.SET_PRICE
     }),
-    ...mapActions([
-      'oneaction'
-    ])
+    ...mapActions(['changeNumAndPrice'])
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
+h1,
+h2 {
   font-weight: normal;
 }
 ul {
