@@ -2,6 +2,7 @@
   <div class="hello">
     <h1></h1>
     <h2>Essential Links</h2>
+    <h1>firstName: {{firstName}} lastName: {{lastName}} fullName: {{fullName}}</h1>
     <ul>
       <li>
         <a href="#">{{a}}*{{b}}={{total}}</a>
@@ -36,7 +37,9 @@ export default {
       a: 'nums',
       b: 'price'
     }),
-    ...mapGetters(['total'])
+    ...mapState('userinfo', ['firstName', 'lastName']),
+    ...mapGetters(['total']),
+    ...mapGetters('userinfo', ['fullName'])
   },
   methods: {
     add () {
@@ -52,7 +55,12 @@ export default {
       setNums: type.SET_NUMS,
       setprice: type.SET_PRICE
     }),
-    ...mapActions(['changeNumAndPrice'])
+    ...mapActions(['changeNumAndPrice']),
+    ...mapActions('userinfo', ['getName'])
+
+  },
+  created () {
+    this.getName()
   }
 }
 </script>
