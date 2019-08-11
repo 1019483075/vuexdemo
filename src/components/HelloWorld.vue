@@ -1,6 +1,5 @@
 <template>
   <div class="hello">
-    <<<<<<< HEAD
     <div>state获取nums：{{a}} price：{{b}}</div>
     <!-- <div>{{nums}}和{{price}}</div> -->
     <div>**--------------------------------------------------------------------**</div>
@@ -12,7 +11,7 @@
     <div>mutation对象方式提交载荷的状态：{{count}}</div>
     <button @click="incrementsFour">4）mutation----对象风格传参按钮</button>
     <div>mutation对象风格传参状态：{{count}}</div>
-    <button @click="changeName">对象新增属性按钮</button>
+    <button @click="changeObjName">对象新增属性按钮</button>
     <div>对象新增属性测试：{{name}}</div>
     <button @click="add">add事件</button>
     <div href="#">add事件操作后的nums值：{{a}}</div>
@@ -36,14 +35,14 @@
         <button @click="add">点击</button>
         <button @click="changeNumAndPrice">changeNumAndPrice</button>
       </li>
-    </ul>>>>>>>> acb29975723d630fb38a43ee5b10a0545bbebe3e
+    </ul>
   </div>
 </template>
 
 <script>
-import * as type from '../store/mutation-types';
+import * as type from '../store/mutation-types'
 // import store from '../store/index.js'; // 1. 对象字面量方法虚引入store
-import { mapState, mapMutations, mapGetters, mapActions } from 'vuex';
+import { mapState, mapMutations, mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'HelloWorld',
@@ -78,8 +77,8 @@ export default {
     //   return this.$store.getters.total
     // }
     // 2.mapGetters辅助函数
-    ...mapGetters(['total'])
-    // ...mapGetters('userinfo', ['fullName'])
+    ...mapGetters(['total']),
+    ...mapGetters('userinfo', ['fullName'])
   },
   methods: {
     // 1.提交mutation
@@ -103,7 +102,7 @@ export default {
       })
     },
     // 5.以新对象替换老对象
-    changeName () {
+    changeObjName () {
       // this.name.b = 'bbbb' // 这样新增属性是错误的
       this.$set(this.name, 'b', 'bbbb') // 当需要在对象上添加新属性时，你应该 Vue.set(obj, 'xxx', xx)
       // this.name = { ...this.name, b: 'bbbb' } // 以新对象替换老对象。例如，利用 stage-3 的对象展开运算符我们可以这样写
@@ -137,7 +136,8 @@ export default {
     // mapAction辅助函数
     ...mapActions({
       // changeIncrement: 'increment', // 将 `this.changeIncrement()` 映射为 `this.$store.dispatch('increment')`
-      changeIncrement: 'actionA'
+      changeIncrement: 'actionA',
+      changeNumAndPrice: 'changeNumAndPrice'
     }),
     ...mapActions('userinfo', ['changeName'])
   },
